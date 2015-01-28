@@ -36,9 +36,13 @@ On Nix and OSX this defaults to */home/<user>/.BuildServer*.
 
 On Windows is by default:%PROGRAMDATA%\JetBrains\TeamCity ( Windows 8, Teamcity Version 8.0.4 )
 
+Before compiling, it's important to update the build.properties file with the paths the Teamcity distribution and to the TEAMCITY_DATA_PATH folder. When the process is complete, ant should automatically copy the unityRunner.zip file to the Datapath folder. For example:
 
+```
+path.variable.teamcitydistribution=C:\\TeamCity
+teamcity.data.path=c:\\Teamcity
 
-Before compiling, it's important to update the build.properties file with the paths the Teamcity distribution and to the TEAMCITY_DATA_PATH folder. When the process is complete, ant should automatically copy the unityRunner.zip file to the Datapath folder.
+```
 
 #### Ant CLI
 
@@ -67,6 +71,7 @@ by looking in the default install location for each platform (Program Files or A
 
 Many of these relate to [Unity3d command line arguments](http://unity3d.com/support/documentation/Manual/Command%20Line%20Arguments.html)
 
+* Unity executable - overrides the default path of Unity executable (useful to run builds on multiple Unity versions)
 * Batch Mode - should be left enabled usually, enables the Unity -batchmode
 * No graphics - on Windows only, do not initialize a graphics device during a build to avoid errors when running without a good GPU. Equivalent to -nographics command line option
 * Project path - specifies the path (relative to Working directory) of Unity project to open
