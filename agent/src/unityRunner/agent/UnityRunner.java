@@ -63,7 +63,12 @@ public class UnityRunner {
 
         if (!configuration.executeMethod.equals("")) {
             args.add("-executeMethod");
-            args.add(configuration.executeMethod);
+            //args.add(configuration.executeMethod);
+            String[] moreArgs = configuration.executeMethod.split(" ");
+            for(int i=0;i<moreArgs.length;++i)
+            {
+                args.add(moreArgs[i]);
+            }
         }
 
         if (configuration.useCleanedLog) {
@@ -71,7 +76,13 @@ public class UnityRunner {
             args.add(configuration.getCleanedLogPath());
         }
 
-        args.add(configuration.extraOpts);
+        if (!configuration.extraOpts.equals("")) {
+            //args.add(configuration.extraOpts);
+            String[] moreArgs = configuration.extraOpts.split(" ");
+            for (int i = 0; i < moreArgs.length; ++i) {
+                args.add(moreArgs[i]);
+            }
+        }
 
         return args;
     }
